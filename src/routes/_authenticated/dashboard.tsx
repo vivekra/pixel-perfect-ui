@@ -33,7 +33,6 @@ import {
   Send,
   Pencil,
   Sparkles,
-  Send,
 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
