@@ -431,6 +431,3 @@ function DashboardPage() {
     </div>
   );
 }
-
-// Avoid unused-import error from Sparkles by re-exporting in scope
-import { Sparkles } from "lucide-react";
