@@ -12,10 +12,18 @@ function GoogleIcon() {
   );
 }
 
+function AppleIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden>
+      <path d="M16.365 1.43c0 1.14-.46 2.23-1.21 3.02-.79.85-2.07 1.52-3.13 1.43-.13-1.12.42-2.29 1.15-3.04.81-.84 2.18-1.46 3.19-1.41zM20.5 17.27c-.55 1.26-.82 1.82-1.53 2.93-.99 1.55-2.39 3.47-4.12 3.49-1.54.02-1.94-1-4.03-.99-2.09.01-2.53 1-4.07.98-1.73-.02-3.05-1.76-4.04-3.3C-.04 15.96-.34 10.66 1.74 7.7c1.46-2.06 3.76-3.27 5.93-3.27 2.2 0 3.59 1.21 5.42 1.21 1.78 0 2.86-1.21 5.42-1.21 1.93 0 3.98 1.05 5.44 2.87-4.78 2.62-4 9.43-3.45 9.97z"/>
+    </svg>
+  );
+}
+
 export function SocialAuthButtons() {
   const [loading, setLoading] = useState<string | null>(null);
 
-  const signIn = async (provider: "google") => {
+  const signIn = async (provider: "google" | "apple") => {
     setLoading(provider);
     try {
       const result = await lovable.auth.signInWithOAuth(provider, {
@@ -33,20 +41,26 @@ export function SocialAuthButtons() {
 
   return (
     <div className="space-y-3">
-      <Button
-        type="button"
-        variant="outline"
-        className="w-full"
-        onClick={() => signIn("google")}
-        disabled={loading !== null}
-      >
-        {loading === "google" ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
-        ) : (
-          <GoogleIcon />
-        )}
-        Continue with Google
-      </Button>
+      <div className="grid grid-cols-2 gap-3">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => signIn("google")}
+          disabled={loading !== null}
+        >
+          {loading === "google" ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleIcon />}
+          Google
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => signIn("apple")}
+          disabled={loading !== null}
+        >
+          {loading === "apple" ? <Loader2 className="h-4 w-4 animate-spin" /> : <AppleIcon />}
+          Apple
+        </Button>
+      </div>
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t border-border" />
