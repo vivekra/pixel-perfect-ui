@@ -91,7 +91,8 @@ function RegisterPage() {
               <CardDescription>Get a workspace running in under a minute.</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <SocialAuthButtons />
+              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full name</Label>
                   <Input id="name" required value={name} onChange={(e) => setName(e.target.value)} />
