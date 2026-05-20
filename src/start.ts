@@ -1,6 +1,5 @@
 import { createStart, createMiddleware } from "@tanstack/react-start";
 
-import { renderErrorPage } from "./lib/error-page";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
@@ -11,10 +10,10 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
       throw error;
     }
     console.error(error);
-    return new Response(renderErrorPage(), {
-      status: 500,
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
+    return new Response(
+      "<!doctype html><title>Error</title><h1>This page didn't load</h1><p>Something went wrong. <a href=\"/\">Go home</a></p>",
+      { status: 500, headers: { "content-type": "text/html; charset=utf-8" } },
+    );
   }
 });
 

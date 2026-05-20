@@ -1,0 +1,10 @@
+[build]
+  command = "vite build"
+  publish = "dist/client"
+
+[functions]
+  directory = ".netlify/functions-internal"
+  node_bundler = "esbuild"
+
+# TanStack Start's Netlify target emits its own _redirects so SSR routes
+# fall through to the server function automatically.
