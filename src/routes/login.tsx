@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BrandLockup } from "@/components/brand";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SocialAuthButtons } from "@/components/social-auth-buttons";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
@@ -79,7 +80,8 @@ function LoginPage() {
               <CardDescription>Enter your credentials to access your workspace.</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <SocialAuthButtons />
+              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
